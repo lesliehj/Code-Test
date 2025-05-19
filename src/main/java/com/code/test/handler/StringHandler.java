@@ -1,6 +1,7 @@
 package com.code.test.handler;
 
 import com.code.test.strategy.StringStrategy;
+import com.code.test.utils.MyStringUtils;
 
 import java.util.List;
 
@@ -26,6 +27,11 @@ public class StringHandler {
      * @Param [input, params] input:输入字符串 params:参数列表
      **/
     public String handle(String input, String... params) {
+
+        if (!MyStringUtils.isAllLowerCase(input)) {
+            throw new IllegalArgumentException("Input string must be in lowercase.");
+        }
+
         System.out.println("Input: " + input);
         System.out.println("Output:");
         // 顺序执行策略列表中的策略
